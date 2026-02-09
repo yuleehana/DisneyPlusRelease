@@ -1,0 +1,80 @@
+@use '../../App.scss' as rs;
+
+.bannerBtnWrap {
+  position: absolute;
+  top: clamp(70%, 40vh, 65%);
+  left: 5%;
+  transform: translateY(-50%);
+  width: 40%;
+  display: flex;
+  gap: 2rem;
+
+  .nowPlay {
+    width: fit-content;
+    aspect-ratio: 168/45;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: clamp(0, 0, 0) clamp(12px, 0.8vw, 16px);
+    background: #fff;
+    border-radius: 8px;
+    @include rs.font(clamp(14px, 1.4vw, 20px), 500, #333);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba($color: #000000, $alpha: 0.15);
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background: #f4f4f4;
+    }
+  }
+
+  .moreInfo {
+    @include rs.font(clamp(14px, 1.4vw, 20px), 500, #fff);
+    width: fit-content;
+    aspect-ratio: 2.8;
+    background: rgba($color: #fff, $alpha: 0.1);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba($color: #fff, $alpha: 0.2);
+    border-radius: 8px;
+    text-align: center;
+    white-space: nowrap;
+    padding: clamp(0, 0, 0) clamp(12px, 0.8vw, 16px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  .heart {
+    background-image: url('../../../public/icon/heart.svg');
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    background-repeat: no-repeat;
+    background-position: center;
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba($color: #fff, $alpha: 0.2);
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    width: 54px;
+
+    &.active {
+      background-image: url('../../../../public/icon/heartFillIcon.svg');
+      background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.2);
+      background-position: center;
+    }
+  }
+}
+
+@include rs.respond(tablet) {
+  .bannerBtnWrap {
+    display: none;
+  }
+}

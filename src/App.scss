@@ -1,0 +1,339 @@
+/* 공동 scss common
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-size: 10px;
+  font-family: Pretendard;
+  overflow-x: hidden;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button,
+textarea {
+  border: none;
+  cursor: pointer;
+  background: inherit;
+  font-family: 'Pretendard', sans-serif;
+  outline: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.inner {
+  max-width: 1720px;
+  margin: 0 auto;
+}
+
+.pullInner {
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+em,
+i,
+address {
+  font-style: normal;
+}
+
+.normal {
+  background-color: #02172a;
+}
+
+.kids {
+  background-color: #002f3e;
+}
+
+/* TODO 반응형 해상도 */
+
+@mixin respond($res) {
+  @media screen and (max-width: $res) {
+    @content;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .inner {
+    max-width: 1680px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .inner {
+    max-width: 1520px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .inner {
+    /* max-width: * *; */
+  }
+}
+
+@media screen and (max-width: 393px) {
+  .inner {
+    /* max-width: * *; */
+  }
+}
+
+//TODO 한글 Pretendard 폰트
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2')
+    format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2')
+    format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2')
+    format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2')
+    format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2')
+    format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2')
+    format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+//TODO font Rubik Doodle Shadow
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Jua&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans+KR:wght@100..900&family=Rubik+Doodle+Shadow&display=swap');
+
+//TODO mixin
+@mixin font($fs: 1.6rem, $fw: 400, $color: $base) {
+  font-size: $fs;
+  font-weight: $fw;
+  color: $color;
+}
+
+//TODO age
+@mixin age() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+
+  &::before {
+    display: inline-block;
+    @include font(1.4rem, 500, #fff);
+    font-size: clamp(0.8rem, 1vw, 1.4rem);
+    padding: 4px 8px;
+    // aspect-ratio: 40/22;
+    text-wrap: nowrap;
+  }
+
+  &.ageAL {
+    background-color: rgba(76, 175, 80, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: 'ALL';
+      font: clamp(1.2rem, 1.2vw, 1.4rem);
+    }
+  }
+
+  &.ageAll {
+    background-color: rgba(76, 175, 80, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: 'ALL';
+    }
+  }
+
+  &.age5 {
+    background-color: rgba(40, 167, 69, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: '5세 이상';
+    }
+  }
+
+  &.age6 {
+    background-color: rgba(40, 167, 69, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: '6세 이상';
+    }
+  }
+
+  &.age7 {
+    background-color: rgba(40, 167, 69, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: '7세 이상';
+    }
+  }
+
+  &.age9 {
+    background-color: rgba(40, 167, 69, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &::before {
+      content: '9세 이상';
+    }
+  }
+
+  &.age12 {
+    background-color: rgba(40, 167, 69, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+
+    &::before {
+      content: '12세 이상';
+    }
+  }
+
+  &.age15 {
+    background-color: rgba(220, 115, 23, 0.6);
+    border: 1px solid rgba(220, 115, 23, 0.2);
+
+    &::before {
+      content: '15세 이상';
+    }
+  }
+
+  &.age16 {
+    background-color: rgba(220, 115, 23, 0.6);
+    border: 1px solid rgba(220, 115, 23, 0.2);
+
+    &::before {
+      content: '16세 이상';
+    }
+  }
+
+  &.age18 {
+    background-color: rgba(226, 0, 0, 0.6);
+    border: 1px solid rgba(220, 115, 23, 0.2);
+
+    &::before {
+      content: '18세 이상';
+    }
+  }
+  &.agenone {
+    background-color: rgba(226, 0, 0, 0.6);
+    border: 1px solid rgba(220, 115, 23, 0.2);
+
+    &::before {
+      content: '18세 이상';
+    }
+  }
+}
+
+// 스켈레톤 애니메이션
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+$breakpoints: (
+  web: 1980px,
+  tablet: 768px,
+  mobile: 480px,
+  mini: 320px,
+);
+
+@mixin respond($device) {
+  @media (max-width: map-get($breakpoints, $device)) {
+    @content;
+  }
+}

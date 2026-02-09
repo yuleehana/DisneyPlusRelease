@@ -1,0 +1,50 @@
+// 일반, 키즈 조건문
+// 배경 누르면 장르 리스트 닫히도록
+// 장르 선택하면 해당하는 장르 searchList에 데이터 뿌리고 검색창에 선택된 장르 띄우기
+
+import { useState } from 'react';
+import { useGenreStore } from '../../../store/useGenreStore';
+import { useSearchStore } from '../../../store/useSearchStore';
+
+interface GenreSelectProps {
+  mode: 'normal' | 'kids';
+}
+
+const GenreSelect = ({ mode }: GenreSelectProps) => {
+  const [isOpenGenre, setIsOpenGenre] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState('장르');
+  const { genreList } = useGenreStore();
+  const { setSelectedFilter, onSearch } = useSearchStore();
+
+  // mode에 맞는 장르만 필터
+  const filteredGenres = genreList.filter((genre) => genre.type === mode);
+
+  const handleSelectGenres = (genre: any) => {
+    // 1. 스토어에 필터 객체 { type, value, genreId } 전체 저장
+    setSelectedFilter(genre.filter);
+
+    // 2. 장르/나라의 타이틀을 검색어로 사용하여 onSearch 트리거
+    onSearch(genre.title);
+
+    setSelectedGenre(genre.title);
+    setIsOpenGenre(false);
+  };
+
+  return (
+    <div className={`genreSelectWrap ${isOpenGenre ? 'active' : ''}`}>
+      <div className="genreSelectHeader" onClick={() => setIsOpenGenre(!isOpenGenre)}>
+        <p>{selectedGenre}</p>
+        <span className="genreToggle"></span>
+      </div>
+      <ul className="genreList">
+        {filteredGenres.map((genre, id) => (
+          <li key={id}>
+            <button onClick={() => handleSelectGenres(genre)}>{genre.title}</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default GenreSelect;

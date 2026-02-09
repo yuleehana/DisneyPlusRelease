@@ -1,0 +1,155 @@
+@use '../../../App.scss' as rs;
+
+@include rs.respond(web) {
+  .BottomNav {
+    display: none;
+  }
+}
+@include rs.respond(tablet) {
+  .BottomNav {
+    width: 100%;
+    aspect-ratio: 360/50;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    z-index: 9990;
+    background: rgba(2, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+
+    ul {
+      display: flex;
+      width: 100%;
+
+      li {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .sub-nav {
+          display: none;
+        }
+        .icon {
+          width: 100%;
+          aspect-ratio: 1/1;
+          background-repeat: no-repeat;
+          background-position: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.home {
+            &:hover {
+              &::before {
+                background: url('../../../../public/icon/home-active.svg') no-repeat center center;
+                background-size: cover;
+                width: clamp(20px, 6vw, 32px);
+              }
+            }
+
+            &::before {
+              content: '';
+              background: url('../../../../public/icon/home.svg') no-repeat center center;
+              background-size: cover;
+              width: clamp(20px, 6vw, 32px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &.heart {
+            &:hover {
+              &::before {
+                background: url('../../../../public/icon/heart-active.svg') no-repeat center center;
+                background-size: cover;
+                width: clamp(20px, 6vw, 32px);
+              }
+            }
+
+            &::before {
+              content: '';
+              background: url('../../../../public/icon/heart.svg') no-repeat center center;
+              background-size: cover;
+              width: clamp(20px, 6vw, 32px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &.search {
+            &:hover {
+              &::before {
+                background: url('../../../../public/icon/search-active.svg') no-repeat center center;
+                background-size: cover;
+                width: clamp(20px, 6vw, 32px);
+              }
+            }
+
+            &::before {
+              content: '';
+              background: url('../../../../public/icon/search.svg') no-repeat center center;
+              background-size: cover;
+              width: clamp(20px, 6vw, 32px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &.setting {
+            &:hover {
+              &::before {
+                background: url('../../../../public/icon/setting-active.svg') no-repeat center
+                  center;
+                background-size: cover;
+                width: clamp(20px, 6vw, 32px);
+              }
+            }
+
+            &::before {
+              content: '';
+              background: url('../../../../public/icon/setting.svg') no-repeat center center;
+              background-size: cover;
+              width: clamp(20px, 6vw, 32px);
+              aspect-ratio: 1/1;
+            }
+          }
+
+          &.hamBtn {
+            &:hover {
+              &::before {
+                background: url('../../../../public/icon/hamBar-active.svg') no-repeat center center;
+                background-size: cover;
+                width: clamp(20px, 6vw, 32px);
+              }
+
+              .sub-nav {
+                display: block;
+                position: fixed;
+                top: -80px;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                background: rgba(2, 23, 42);
+                backdrop-filter: blur(12px);
+                display: flex;
+
+                li {
+                  font-size: 14px;
+                  @include rs.font(1.6rem, 600, #fff);
+                  font-size: clamp(1.4rem, 1.6vw, 1.6rem);
+                  width: 100%;
+                  padding: 10px;
+                }
+              }
+            }
+
+            &::before {
+              content: '';
+              background: url('../../../../public/icon/hamBar.svg') no-repeat center center;
+              background-size: cover;
+              width: clamp(20px, 6vw, 32px);
+              aspect-ratio: 1/1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@use '../../../App.scss' as rs;
+
+.Top10List {
+  padding: clamp(35px, 2vh, 100px) clamp(0, 0, 0);
+  padding-left: 4%;
+  // border: 1px solid red;
+  background: linear-gradient(180deg,
+      rgba(2, 23, 42, 0.6) 4%,
+      rgba(12, 48, 64, 0.6) 16%,
+      rgba(47, 131, 139, 0.55) 53%,
+      rgba(12, 48, 64, 0.56) 81%,
+      rgba(2, 23, 42, 0.6) 100%);
+  max-width: 1920px;
+  width: 100%;
+  aspect-ratio: 768 / 300;
+  margin: 0 auto;
+  aspect-ratio: 768/300;
+
+  &.kids {
+    background: linear-gradient(180deg,
+        rgba(0, 47, 62, 1) 4%,
+        rgba(12, 48, 64, 1) 16%,
+        rgba(47, 131, 139, 0.91) 53%,
+        rgba(12, 48, 64, 0.93) 81%,
+        rgba(0, 47, 62, 1) 100%);
+  }
+
+  // .swiper {
+  //   border: 1px solid red;
+  // }
+
+
+
+  .TopNumber {
+    position: relative;
+    display: flex;
+    justify-content: end;
+
+    .TopNumber {
+      border-radius: 8px;
+      position: absolute;
+      bottom: 0;
+      left: 4px;
+      transform: translateY(0%);
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Rubik Doodle Shadow';
+      font-size: clamp(80px, 9vw, 260px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 80%;
+      letter-spacing: -6.5px;
+      z-index: -1;
+
+      &.number1::before {
+        content: '1';
+      }
+
+      &.number2::before {
+        content: '2';
+      }
+
+      &.number3::before {
+        content: '3';
+      }
+
+      &.number4::before {
+        content: '4';
+      }
+
+      &.number5::before {
+        content: '5';
+      }
+
+      &.number6::before {
+        content: '6';
+      }
+
+      &.number7::before {
+        content: '7';
+      }
+
+      .imgBox {
+        border-radius: 8px;
+        overflow: hidden;
+
+        &.kids {
+          border-radius: 16px;
+        }
+
+        img {
+          height: 100%;
+          vertical-align: middle;
+          object-fit: cover;
+          transition: ease 0.3s;
+        }
+      }
+
+      &:hover .imgBox img {
+        transform: scale(1.1);
+      }
+    }
+
+    a {
+      display: inline-block;
+      width: clamp(70%, 75%, 80%);
+
+      .movieThumbnail {
+        // border: 1px solid red;
+      }
+    }
+  }
+
+  .swiper {
+    // border: 1px solid red;
+  }
+
+  &.kids {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 47, 62, 1) 4%,
+      rgba(12, 48, 64, 1) 16%,
+      rgba(47, 131, 139, 0.91) 53%,
+      rgba(12, 48, 64, 0.93) 81%,
+      rgba(0, 47, 62, 1) 100%
+    );
+  }
+}

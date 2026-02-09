@@ -1,0 +1,142 @@
+@use '../../../App.scss' as rs;
+
+.profileCreationBg {
+  background: #0a1a26;
+  padding: 10rem;
+  align-content: center;
+  justify-items: center;
+  height: 100vh;
+
+  .profileCreateWrap {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 6rem;
+    align-items: center;
+
+    .profileCreateBoxWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 130%;
+
+      .profileCreateBox {
+        padding: 1.5rem 3rem;
+
+        .userEmail {
+          color: #ddd;
+          font-size: 1.8rem;
+          font-weight: 400;
+        }
+      }
+
+      .profileBoxContent {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        &.bottomLine {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        > div {
+          display: flex;
+        }
+
+        .fontSize14 {
+          font-size: 1.4rem;
+          font-weight: 400;
+          color: #ddd;
+        }
+
+        &.membershipChange {
+          > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .membershipMoreWrap {
+              display: flex;
+              align-items: center;
+
+              .membershipMore {
+                width: 2rem;
+                height: 2rem;
+                display: block;
+                background-image: url(../../../../public/icon/mainArrow.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+              }
+            }
+          }
+        }
+
+        .profileBoxSubTitle {
+          font-size: 1.8rem;
+          font-weight: 400;
+        }
+
+        &.profileSetting {
+          > div {
+            display: flex;
+            justify-content: space-between;
+
+            .toggleBg {
+              position: relative;
+              background: #ddd;
+              width: 40px;
+              height: 20px;
+              padding: 2px;
+              border-radius: 50px;
+              cursor: pointer;
+
+              &::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #fff;
+                transition: left 0.3s;
+              }
+
+              &.active {
+                background: #33ddff;
+
+                &::after {
+                  left: calc(100% - 44%);
+                }
+              }
+            }
+          }
+        }
+
+        &.ageSetting {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+
+
+      }
+    }
+
+    .profileCreateBtn {
+      color: white;
+      font-size: 2rem;
+      font-weight: 500;
+      display: flex;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      padding: 1.2rem 1.6rem;
+      width: 13rem;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+}

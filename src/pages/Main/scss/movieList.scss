@@ -1,0 +1,142 @@
+@use '../../../App.scss' as rs;
+
+.marginUp {
+  margin-top: -140px !important;
+}
+
+.TvKeywordList {
+  padding-top: clamp(20px, 4vh, 80px);
+}
+.flexWrap {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.movieList {
+  padding-left: 4%;
+  padding-bottom: clamp(30px, 8vh, 80px);
+
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  // 호버 시 z-index 상승
+  &:hover {
+    z-index: 100;
+  }
+
+  .mySwiper {
+    overflow: visible !important;
+
+    .swiper-wrapper {
+      overflow: visible !important;
+    }
+
+    .swiper-slide {
+      overflow: visible !important;
+      z-index: 1;
+
+      // 호버 시 해당 슬라이드만 z-index 상승
+      &:hover {
+        z-index: 50;
+      }
+    }
+  }
+
+  a {
+    width: 100%;
+
+    &.flex {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-direction: column;
+    }
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+  }
+
+  .movieThumbnail {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    // border: 1px solid yellow;
+
+    &.kids {
+      border-radius: 16px;
+    }
+
+    &.row {
+      aspect-ratio: 360/200;
+    }
+
+    &.col {
+      aspect-ratio: 3/4.4;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 3/4.4;
+      object-fit: cover;
+      vertical-align: middle;
+      transition: ease 0.3s;
+      // border: 1px solid red;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    .movieTitle {
+      position: absolute;
+      @include rs.font(2rem, 600, #fff);
+      font-size: clamp(1.2rem, 1.4vw, 2rem);
+      bottom: clamp(4px, 0.8vh, 16px);
+      left: 16px;
+      text-shadow: -1px -1px 0 #02172a, 1px -1px 0 #02172a, -1px 1px 0 #02172a, 1px 1px 0 #02172a;
+    }
+  }
+
+  .progressBar {
+    width: 100%;
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+    overflow: hidden;
+
+    .now {
+      background: #33ddff;
+      height: 100%;
+      display: block;
+    }
+  }
+}
+@include rs.respond(mobile) {
+  .marginUp {
+    margin-top: 0 !important;
+  }
+  .movieList {
+    padding-bottom: clamp(30px, 3vh, 80px);
+  }
+}

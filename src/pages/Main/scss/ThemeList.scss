@@ -1,0 +1,227 @@
+@use '../../../App.scss' as rs;
+
+$Theme: disney, pixar, marvel, starwars, NGC, hulu, fx;
+$image-root: '../../../../public/images/main/theme/';
+$Theme-sizes: (
+  disney: (
+    width: clamp(46px, 5vw, 113px),
+    aspect-ratio: 113 / 30,
+  ),
+  pixar: (
+    width: clamp(46px, 4.5vw, 103px),
+    aspect-ratio: 103 / 23,
+  ),
+  marvel: (
+    width: clamp(46px, 5.5vw, 125px),
+    aspect-ratio: 125 / 50,
+  ),
+  starwars: (
+    width: clamp(46px, 4.5vw, 100px),
+    aspect-ratio: 100 / 50,
+  ),
+  NGC: (
+    width: clamp(46px, 6vw, 140px),
+    aspect-ratio: 140 / 42,
+  ),
+  hulu: (
+    width: clamp(46px, 4.2vw, 97px),
+    aspect-ratio: 97 / 50,
+  ),
+  fx: (
+    width: clamp(46px, 4vw, 92px),
+    aspect-ratio: 92 / 50,
+  ),
+);
+
+.hidden {
+  display: none !important;
+}
+
+.ThemeWrap {
+  max-width: 1920px;
+  margin: 0 auto;
+  aspect-ratio: 1920/570;
+  border: 1px solid transparent;
+
+  .menu {
+    margin-bottom: 90px;
+    display: flex;
+    flex-direction: column;
+
+    // border: 1px solid red;
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 100px;
+      gap: clamp(30px, 4vw, 100px);
+      padding-bottom: 30px;
+
+      li {
+        width: clamp(56px, 2vw, 120px);
+        height: 80px;
+        cursor: pointer;
+
+        @each $Theme, $size-map in $Theme-sizes {
+          &.#{$Theme} {
+            $brand-width: map-get($size-map, width); // Map에서 width 값을 가져옴
+            $aspect-ratio: map-get($size-map, aspect-ratio); // Map에서 height 값을 가져옴
+            width: $brand-width;
+
+            aspect-ratio: $aspect-ratio;
+            background: url('#{$image-root}#{$Theme}.svg') no-repeat center center;
+            background-size: contain;
+            &:hover {
+              background: url('#{$image-root}#{$Theme}_active.svg') no-repeat center center;
+              opacity: 0.5;
+              background-size: contain;
+            }
+          }
+
+          &.#{$Theme}.active {
+            background: url('#{$image-root}#{$Theme}_active.svg') no-repeat center center;
+            background-size: contain;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    .ThemeList {
+      background: linear-gradient(
+        180deg,
+        rgba(2, 23, 42, 0.6) 4%,
+        rgba(12, 48, 64, 0.6) 16%,
+        rgba(47, 131, 139, 0.55) 53%,
+        rgba(12, 48, 64, 0.56) 81%,
+        rgba(2, 23, 42, 0.6) 100%
+      );
+      display: flex;
+      padding-top: 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      width: 100%;
+      overflow: hidden;
+
+      .themeText {
+        width: 22.5%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          @include rs.font(clamp(10px, 2vw, 24px), 600, #fff);
+          padding: 0 40px;
+          line-height: 150%;
+          letter-spacing: -0.6px;
+          word-break: keep-all;
+          text-align: center;
+        }
+
+        button {
+          @include rs.font(2rem, 500, #fff);
+          padding: 12px 16px;
+          border-radius: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(12px);
+        }
+      }
+
+      .themeMovie {
+        width: calc(100% - 23%);
+
+        .skeleton {
+          overflow: hidden;
+          display: flex;
+          width: 100%;
+          gap: 20px;
+
+          .div {
+            min-width: calc(100% / 4.6) !important;
+            aspect-ratio: 320/454;
+            border-radius: 8px;
+            background: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.05) 25%,
+              rgba(255, 255, 255, 0.1) 50%,
+              rgba(255, 255, 255, 0.05) 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+            border-radius: 4px;
+          }
+        }
+
+        .swiper-slide {
+          aspect-ratio: 323/480;
+          border-radius: 8px;
+          overflow: hidden;
+          // border: 1px solid green;
+
+          a {
+            width: 100%;
+            height: inherit;
+            display: inline-block;
+          }
+
+          .movieThumbnail {
+            width: 100%;
+            height: 100%;
+          }
+
+          img {
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            object-fit: cover;
+            object-position: center;
+            // border: 1px solid blue;
+            transition: ease 0.3s;
+          }
+
+          &:hover img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include rs.respond(tablet) {
+  .ThemeWrap .menu {
+    aspect-ratio: 1920/1400;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 0;
+
+    ul {
+      height: fit-content;
+      flex-direction: column;
+      padding: 0;
+      height: auto;
+      gap: clamp(8px, 2vw, 100px);
+
+      li {
+        height: 14%;
+      }
+    }
+
+    .ThemeList {
+      padding: 0;
+
+      .themeText {
+        display: none;
+      }
+
+      .themeMovie {
+        width: 100%;
+      }
+    }
+  }
+}
